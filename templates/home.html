@@ -35,13 +35,6 @@
         <button type="submit">Search</button>
       </form>
       <p id="message" hidden></p>
-
-      <p>
-        <small>Choose one of these keywords:</small>
-        {% for keyword in keywords %}
-        <a href="{{ url_for('search', keyword=keyword) }}">{{ keyword }}</a>{% if not loop.last %} · {% endif %}
-        {% endfor %}
-      </p>
     </main>
 
     <script>
