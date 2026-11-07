@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Scrapper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+      #search-form button {
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <hgroup>
+        <h1>Job Scrapper</h1>
+        <p>You can search for jobs.</p>
+      </hgroup>
+
+      <form
+        id="search-form"
+        role="search"
+        data-keywords='{{ keywords | tojson }}'
+        data-static='{{ static_mode | tojson }}'
+      >
+        <input
+          type="search"
+          id="keyword"
+          name="keyword"
+          placeholder="Choose python, javascript, or java"
+          aria-label="Search keyword"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+      <p id="message" hidden></p>
+
+      <p>
+        <small>Choose one of these keywords:</small>
+        {% for keyword in keywords %}
+        <a href="{{ url_for('search', keyword=keyword) }}">{{ keyword }}</a>{% if not loop.last %} · {% endif %}
+        {% endfor %}
+      </p>
+    </main>
+
+    <script>
+      const form = document.getElementById("search-form");
+      const KEYWORDS = JSON.parse(form.dataset.keywords);
+      const STATIC_MODE = JSON.parse(form.dataset.static);
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const keyword = document.getElementById("keyword").value.trim().toLowerCase();  
+        const message = document.getElementById("message");
+        if (!keyword) return;
+
+        if (STATIC_MODE && !KEYWORDS.includes(keyword)) {
+          message.hidden = false;
+          message.textContent = `“${keyword}” is not a pre-made search term. Please choose from: ${KEYWORDS.join(", ")}`;
+          return;
+        }
+        location.href = "search/" + encodeURIComponent(keyword) + "/" + (STATIC_MODE ? "index.html" : "");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ keyword }} - Job Scrapper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+      [data-tab][aria-current="true"] {
+        background: var(--pico-primary-background);
+        color: var(--pico-primary-inverse);
+      }
+      td a[role="button"] {
+        padding: 0.25rem 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <hgroup>
+        <h1>Search Results: {{ keyword }}</h1>
+      </hgroup>
+
+      {% if jobs %}
+      <div role="group" aria-label="사이트별 보기">
+        <button type="button" class="outline" data-tab="" aria-current="true">All ({{ jobs | length }})</button>
+        {% for source, count in counts.items() %}
+        <button type="button" class="outline" data-tab="{{ source }}">{{ source }} ({{ count }})</button>
+        {% endfor %}
+      </div>
+
+      <div class="overflow-auto" id="job-table">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for job in jobs %}
+            <tr data-source="{{ job.source }}">
+              <td>{{ job.title }}</td>
+              <td>{{ job.company }}</td>
+              <td><a role="button" href="{{ job.link }}" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <article id="empty-tab" hidden>이 사이트에는 “{{ keyword }}” 공고가 없어요.</article>
+      {% else %}
+      <article>“{{ keyword }}”에 대한 공고를 찾지 못했어요.</article>
+      {% endif %}
+    </main>
+
+    <script>
+      const tabs = document.querySelectorAll("[data-tab]");
+      const rows = document.querySelectorAll("tr[data-source]");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((other) => other.removeAttribute("aria-current"));
+          tab.setAttribute("aria-current", "true");
+
+          let visible = 0;
+          rows.forEach((row) => {
+            row.hidden = tab.dataset.tab !== "" && row.dataset.source !== tab.dataset.tab;
+            if (!row.hidden) visible += 1;
+          });
+          document.getElementById("job-table").hidden = visible === 0;
+          document.getElementById("empty-tab").hidden = visible !== 0;
+        });
+      });
+    </script>
+  </body>
+</html>
