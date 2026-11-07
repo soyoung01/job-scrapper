@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>python - Job Scrapper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+      [data-tab][aria-current="true"] {
+        background: var(--pico-primary-background);
+        color: var(--pico-primary-inverse);
+      }
+      td a[role="button"] {
+        padding: 0.25rem 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <hgroup>
+        <h1>Search Results: python</h1>
+      </hgroup>
+
+      
+      <div role="group" aria-label="사이트별 보기">
+        <button type="button" class="outline" data-tab="" aria-current="true">All (23)</button>
+        
+        <button type="button" class="outline" data-tab="Berlin Startup Jobs">Berlin Startup Jobs (4)</button>
+        
+        <button type="button" class="outline" data-tab="We Work Remotely">We Work Remotely (4)</button>
+        
+        <button type="button" class="outline" data-tab="web3.career">web3.career (15)</button>
+        
+      </div>
+
+      <div class="overflow-auto" id="job-table">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr data-source="Berlin Startup Jobs">
+              <td>Founding Principal Engineer (m/f/d)</td>
+              <td>Ferto AI</td>
+              <td><a role="button" href="https://berlinstartupjobs.com/engineering/founding-principal-engineer-m-f-d-ferto-ai/" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="Berlin Startup Jobs">
+              <td>Senior Backend Developer – Go &amp; Kubernetes</td>
+              <td>DATATRONiQ</td>
+              <td><a role="button" href="https://berlinstartupjobs.com/engineering/senior-backend-developer-golang-m-f-d-datatroniq/" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="Berlin Startup Jobs">
+              <td>Senior Data Scientist – Python, ML &amp; Signal-Processing</td>
+              <td>DATATRONiQ</td>
+              <td><a role="button" href="https://berlinstartupjobs.com/engineering/senior-data-scientist-datatroniq/" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="Berlin Startup Jobs">
+              <td>Senior Frontend Developer – TypeScript, React &amp; Design-Gespür</td>
+              <td>DATATRONiQ</td>
+              <td><a role="button" href="https://berlinstartupjobs.com/engineering/senior-fullstack-developer-typescript-javascript-node-js-datatroniq/" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="We Work Remotely">
+              <td>Senior Backend Developer (Python)</td>
+              <td>Proxify AB</td>
+              <td><a role="button" href="https://weworkremotely.com/remote-jobs/proxify-ab-senior-backend-developer-python-11" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="We Work Remotely">
+              <td>Senior Python Developer (CRM - AI/LLM)</td>
+              <td>Emerging Travel Group</td>
+              <td><a role="button" href="https://weworkremotely.com/remote-jobs/emerging-travel-group-senior-python-developer-crm-ai-llm" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="We Work Remotely">
+              <td>Operations Expert with Python for AI Supply Chain Task Design</td>
+              <td>Toptal</td>
+              <td><a role="button" href="https://weworkremotely.com/remote-jobs/toptal-operations-expert-with-python-for-ai-supply-chain-task-design" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="We Work Remotely">
+              <td>Remote AI Trainers (Generalist and Python Coding Experts)</td>
+              <td>AITrainers</td>
+              <td><a role="button" href="https://weworkremotely.com/remote-jobs/aitrainers-remote-ai-trainers-generalist-and-python-coding-experts" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Robotics Lead</td>
+              <td>Telegraph</td>
+              <td><a role="button" href="https://web3.career/robotics-lead-telegraph/155257" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Staff Software Engineer AI Security Go Rust Python</td>
+              <td>Zscaler</td>
+              <td><a role="button" href="https://web3.career/staff-software-engineer-ai-security-go-rust-python-zscaler/153659" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Software Engineer Rust Python Asset Pricing Hedging</td>
+              <td>Bitpanda</td>
+              <td><a role="button" href="https://web3.career/software-engineer-rust-python-asset-pricing-hedging-bitpanda/150010" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Python Engineer Asset Pricing Hedging</td>
+              <td>Bitpanda</td>
+              <td><a role="button" href="https://web3.career/python-engineer-asset-pricing-hedging-bitpanda/103283" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Software Engineer Python Asset Pricing Hedging</td>
+              <td>Bitpanda</td>
+              <td><a role="button" href="https://web3.career/software-engineer-python-asset-pricing-hedging-bitpanda/149554" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Senior QA Engineer Exploratory Python Trading Technologies</td>
+              <td>Binance</td>
+              <td><a role="button" href="https://web3.career/senior-qa-engineer-exploratory-python-trading-technologies-binance/150664" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Senior Software Development Engineer in Test Automation Python Trading Technologies</td>
+              <td>Binance</td>
+              <td><a role="button" href="https://web3.career/senior-software-development-engineer-in-test-automation-python-trading-technologies-binance/150607" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>IT Junior Python Developer London</td>
+              <td>B2c2</td>
+              <td><a role="button" href="https://web3.career/it-junior-python-developer-london-b2c2/144971" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Senior Software Engineer Python Asset Pricing Hedging</td>
+              <td>Bitpanda</td>
+              <td><a role="button" href="https://web3.career/senior-software-engineer-python-asset-pricing-hedging-bitpanda/101436" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Software Developer Python DV Equities</td>
+              <td>Dvtrading</td>
+              <td><a role="button" href="https://web3.career/software-developer-python-dv-equities-dvtrading/149355" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Senior Solutions Engineer API Python Node.JS</td>
+              <td>Binance</td>
+              <td><a role="button" href="https://web3.career/senior-solutions-engineer-api-python-node-js-binance/148589" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Senior API Solutions Engineer Python Node.JS</td>
+              <td>Binance</td>
+              <td><a role="button" href="https://web3.career/senior-api-solutions-engineer-python-node-js-binance/146936" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>JrMid Python Developer Accounting Team</td>
+              <td>B2c2</td>
+              <td><a role="button" href="https://web3.career/jr-mid-python-developer-accounting-team-b2c2/138510" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Lead Python Developer DeFi Infrastructure</td>
+              <td>ConnectHum</td>
+              <td><a role="button" href="https://web3.career/lead-python-developer-defi-infrastructure-connecthum/145672" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+            <tr data-source="web3.career">
+              <td>Security Engineer Python</td>
+              <td>Binance</td>
+              <td><a role="button" href="https://web3.career/security-engineer-python-binance/144925" target="_blank" rel="noopener">Apply</a></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <article id="empty-tab" hidden>이 사이트에는 “python” 공고가 없어요.</article>
+      
+    </main>
+
+    <script>
+      const tabs = document.querySelectorAll("[data-tab]");
+      const rows = document.querySelectorAll("tr[data-source]");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((other) => other.removeAttribute("aria-current"));
+          tab.setAttribute("aria-current", "true");
+
+          let visible = 0;
+          rows.forEach((row) => {
+            row.hidden = tab.dataset.tab !== "" && row.dataset.source !== tab.dataset.tab;
+            if (!row.hidden) visible += 1;
+          });
+          document.getElementById("job-table").hidden = visible === 0;
+          document.getElementById("empty-tab").hidden = visible !== 0;
+        });
+      });
+    </script>
+  </body>
+</html>
