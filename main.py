@@ -1,6 +1,5 @@
-from flask import Flask, Response, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for
 from extractors import extract_all_jobs, SOURCES
-from file import make_csv
 
 app = Flask(__name__)
 
@@ -35,11 +34,6 @@ def search(keyword):
     for job in jobs:
         counts[job["source"]] += 1
     return render_template("search.html", keyword=keyword, jobs=jobs, counts=counts)
-
-
-@app.route("/export/<keyword>.csv")
-def export(keyword):
-    return Response(make_csv(get_jobs(keyword)), mimetype="text/csv")
 
 
 # Flask에서 사용 가능

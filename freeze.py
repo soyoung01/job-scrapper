@@ -23,12 +23,6 @@ def search():
         yield {"keyword": keyword}
 
 
-@freezer.register_generator
-def export():
-    for keyword in KEYWORDS:
-        yield {"keyword": keyword}
-
-
 if __name__ == "__main__":
     urls = freezer.freeze()
     print(f"\n{len(urls)}개 페이지 생성 완료 → build/")

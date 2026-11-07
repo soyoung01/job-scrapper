@@ -9,7 +9,7 @@ Flask로 만든 잡 스크래퍼.
 ## 구조
 
 ```
-main.py            Flask 앱 (/, /search/<keyword>/, /export/<keyword>.csv)
+main.py            Flask 앱 (/, /search/<keyword>/)
 freeze.py          Frozen-Flask로 정적 HTML 생성 → build/
 extractors/        사이트별 스크래퍼 (모두 같은 형태의 dict 반환)
 templates/         home.html, search.html
